@@ -1,1 +1,35 @@
-<p class="bg-yellow-500">login works!</p>
+<div class="flex">
+
+    <div class="w-screen h-screen md:w-[60vw] px-12 pt-8 pb-12">     
+        <img class="w-50" src={{thrsl}}>
+        <div class="lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center">
+            <h3 class="text-xl font-semibold text-white">Welcome Back</h3>
+            <p class="text-xs text-slate-400 mt-[5px] mb-6">
+                Please enter your details to log in
+            </p>
+
+            <form class="space-y-5">                  
+                <p-iftalabel>
+                    <input class="w-full"  name="username" pInputText id="username" [(ngModel)]="value1" autocomplete="off" />
+                    <label for="username">Username</label>
+                </p-iftalabel>
+                <p-iftalabel>
+                    <input class="w-full"  name="password" pInputText id="password" [(ngModel)]="value2" autocomplete="off" />
+                    <label for="password">Password</label>
+                </p-iftalabel>
+                 <button class="btn-primary" type="submit">LOGIN</button>    
+            
+            </form>
+      </div>
+    </div>
+
+    <div class="hidden md:block w-[40vw] h-screen overflow-hidden relative">
+        <div class="bg-red-600 w-48 h-screen rounded absolute"></div>
+        <div class="bg-blue-700 w-screen h-30 top-5 absolute"></div>
+        <div class="border-[20px] border-white w-48 h-56 -right-5 top-[40%] absolute"></div>
+        <img class="rounded absolute w-5/6 left-5 shadow-lg shadow-gray-100/30 bottom-20" src={{bg}} alt="">            
+        <img class="rounded absolute w-3/7 top-5 right-10 shadow-lg shadow-gray-100/30" src={{bg_3}} alt="">            
+    </div>
+    
+  
+</div>

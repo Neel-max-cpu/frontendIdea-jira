@@ -2,18 +2,24 @@
 @import "tailwindcss";
 
 @layer base{
-    :root{
-        --font-dispaly:"Poppins", "Delius", "san-serif",
+    :root {
+        --font-display: "Poppins", "Delius", sans-serif;
         --break-point-3xl: 1920px;
         --color-primary: #875cf5;
     }
 
     html{
-        font-family: var(--font-dispaly);
+        font-family: var(--font-display);        
     }
+    
 }
 
 
 .my-font{
     font-family: "Delius";
 }
+
+.btn-primary{
+    @apply w-full text-sm font-medium text-white bg-violet-500 shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-purple-200 hover:cursor-pointer hover:text-purple-600
+}
+
