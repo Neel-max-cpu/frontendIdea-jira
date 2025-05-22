@@ -1,0 +1,48 @@
+<div
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+>
+  <div class="bg-white p-6 rounded-xl shadow-lg w-96">
+    <h2 class="text-xl font-bold mb-4">Task ID: {{item.id}}</h2>
+
+    <!-- Your editable fields -->
+    <div class="mb-4">
+      <label>Status</label>      
+      <p-select 
+      [options]="statuses" 
+      [(ngModel)]="selectedStatus" 
+      optionLabel="name" 
+      placeholder="Options" 
+      class="my-class !placeholder:text-gray-500 !bg-white !text-black w-full border rounded p-2 mt-1" 
+      />
+    </div>
+    <div class="mb-4 grid grid-cols-1">
+      <label>Start Date</label>    
+      <p-datepicker 
+        [(ngModel)]="date" 
+        [iconDisplay]="'input'" 
+        [showIcon]="true" 
+        inputId="icondisplay"
+        class="temp-class" 
+      />
+    </div>
+    <div class="mb-4">
+      <label>Reassign</label>
+      <p-select 
+      [options]="peoples" 
+      [(ngModel)]="selectedPeople" 
+      optionLabel="name" 
+      placeholder="Options" 
+      class="my-class !placeholder:text-gray-500 !bg-white !text-black w-full border rounded p-2 mt-1" 
+      />
+    </div>
+
+    <div class="flex justify-end gap-3">
+      <button (click)="close.emit()" class="bg-gray-300 px-4 py-2 rounded hover:cursor-pointer hover:bg-gray-400">
+        Cancel
+      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:cursor-pointer hover:bg-blue-700">
+        Save
+      </button>
+    </div>
+  </div>
+</div>

@@ -23,3 +23,44 @@
     @apply w-full text-sm font-medium text-white bg-violet-500 shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-purple-200 hover:cursor-pointer hover:text-purple-600
 }
 
+.btn-navigate{
+    @apply px-4 py-2 bg-blue-500 text-white rounded hover:cursor-pointer hover:bg-blue-600
+}
+
+.my-class .p-select-label{
+    @apply text-black;
+}
+
+.temp-class .p-datepicker-input{
+    @apply bg-purple-100 border-none placeholder:text-slate-800  text-slate-800
+}
+
+.temp-class .p-datepicker-panel{
+    @apply border-none text-gray-400
+}
+
+.temp-class {
+    .p-datepicker-panel,
+    .p-datepicker-header{
+        @apply bg-purple-100 text-slate-900
+    }
+
+}
+
+.temp-class{
+    .p-datepicker-select-month,
+    .p-datepicker-select-year{
+        @apply text-slate-900
+    }
+}
+
+.temp-class {
+    .p-datepicker-day,
+    .p-datepicker-weekday{
+        @apply text-slate-900
+    }
+}
+
+.temp-class .p-datepicker-day-selected {
+    @apply bg-yellow-500 text-white
+}

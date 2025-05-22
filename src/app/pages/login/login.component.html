@@ -1,8 +1,9 @@
-<div class="flex">
+<!-- <div class="flex">
 
     <div class="w-screen h-screen md:w-[60vw] px-12 pt-8 pb-12">     
         <img class="w-50" src={{thrsl}}>
         <div class="lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center">
+            <img src={{it}} class="mb-4 rounded-xl border-2 border-gray-400">
             <h3 class="text-xl font-semibold text-white">Welcome Back</h3>
             <p class="text-xs text-slate-400 mt-[5px] mb-6">
                 Please enter your details to log in
@@ -17,7 +18,7 @@
                     <input class="w-full"  name="password" pInputText id="password" [(ngModel)]="value2" autocomplete="off" />
                     <label for="password">Password</label>
                 </p-iftalabel>
-                 <button class="btn-primary" type="submit">LOGIN</button>    
+                 <button (click)="handleLogin()" class="btn-primary" type="submit">LOGIN</button>    
             
             </form>
       </div>
@@ -32,4 +33,60 @@
     </div>
     
   
+</div> -->
+
+<div class="bg-black w-screen h-screen flex flex-col">
+
+  <div class="sticky top-0 p-3">
+    <img src="{{ thrsl }}" class="w-40" />
+  </div>
+
+  <div class="flex flex-1 justify-center items-center px-4">
+    <div class="flex flex-col justify-center items-center text-white w-full max-w-md space-y-6">
+      
+      <img src="{{ it }}" class="w-60 border rounded-lg shadow-lg" />
+      
+      <div class="text-center space-y-1">
+        <h1 class="text-3xl font-bold">Welcome Back</h1>
+        <p class="text-gray-400 text-base">Please enter your details to login</p>
+      </div>
+
+      <form class="w-full space-y-5" (submit)="handleLogin()">
+        <p-iftalabel class="w-full">
+          <input
+            pInputText
+            id="username"
+            name="username"
+            [(ngModel)]="value1"
+            class="w-full bg-gray-800 text-white placeholder-gray-400 border border-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            placeholder="Username"
+            autocomplete="off"
+          />
+          <label for="username" class="text-gray-300">Username</label>
+        </p-iftalabel>
+
+        <p-iftalabel class="w-full">
+          <input
+            pInputText
+            id="password"
+            name="password"
+            type="password"
+            [(ngModel)]="value2"
+            class="w-full bg-gray-800 text-white placeholder-gray-400 border border-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            placeholder="Password"
+            autocomplete="off"
+          />
+          <label for="password" class="text-gray-300">Password</label>
+        </p-iftalabel>
+        
+        <button
+          type="submit"
+          class="btn-primary"
+          >          
+          LOGIN
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
+
