@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { Select } from 'primeng/select';
 import { DatePickerModule } from 'primeng/datepicker';;
-import { FluidModule } from 'primeng/fluid';
+import { ToggleSwitch } from 'primeng/toggleswitch';
 
 
 
@@ -55,14 +55,15 @@ interface Status {
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [FormsModule,NgFor, InputTextModule, IftaLabelModule,LucideAngularModule,Dialog,Select,DatePickerModule],
+  imports: [FormsModule,NgFor, NgIf, InputTextModule, IftaLabelModule,LucideAngularModule,Dialog,Select,DatePickerModule,ToggleSwitch],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css',
 })
 export class AdminDashboardComponent implements OnInit{
   readonly Pen = Pen;
   readonly LogOut = LogOut;
-  thrsl = 'images/logo2.png';  
+  thrsl = 'images/logo2.png'; 
+  checked: boolean = false; 
 
   //create user ---
   username: string | undefined;

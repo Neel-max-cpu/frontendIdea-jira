@@ -24,6 +24,23 @@
         <button (click)="handleUser()" class="bg-blue-500 p-3 rounded-xl text-white font-medium hover:cursor-pointer hover:bg-blue-600">Create User</button>
         <button (click)="handleTask()" class="bg-green-500 p-3 rounded-xl text-white font-medium hover:cursor-pointer hover:bg-green-600">Create Task</button>
     </div>
+
+    <div class="flex gap-4">
+      <p-toggleswitch [(ngModel)]="checked" />
+      <div *ngIf="!checked; else assignedTask">
+        <!-- Show when toggle is OFF -->
+        <p>My Task</p>
+      </div>
+
+      <ng-template #assignedTask>
+        <!-- Show when toggle is ON -->
+        <p>Assigned Task</p>
+      </ng-template>
+    </div>
+
+   
+
+    <!-- task given by admin -->
     <div class="bg-gray-200 p-3 rounded-lg shadow-xl">
       <div
         class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px] text-center mb-3 border-b-2 p-2 font-semibold text-lg"
