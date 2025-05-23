@@ -1,26 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 // data
 import data from './data.json';
 
 // icon --
 import { LucideAngularModule, Pen, LogOut  } from 'lucide-angular';
-import { Router } from '@angular/router';
 
-// alert
+// alert, component
 import Swal from 'sweetalert2'
 import { EditPopupComponent } from "../../components/edit-popup/edit-popup.component";
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { DatePickerModule } from 'primeng/datepicker';;
+import { FluidModule } from 'primeng/fluid';
+
 
 @Component({
   selector: 'app-user-dashboard',
-  imports: [NgFor, NgIf, LucideAngularModule, EditPopupComponent],
+  imports: [FormsModule ,NgFor, NgIf, LucideAngularModule, EditPopupComponent, ButtonModule, InputTextModule, DatePickerModule, FluidModule],
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.css',
 })
 export class UserDashboardComponent {
-  constructor(private router: Router) {}
+  readonly Pen = Pen;
+  readonly LogOut  = LogOut ;
+  thrsl = 'images/logo2.png';
 
+
+  constructor(private router: Router) {}
   selectedItem: any = null;
   showPopup = false;
 
@@ -38,7 +48,6 @@ export class UserDashboardComponent {
 
 
 
-
   handleLogOut() {
     Swal.fire({
       title: 'Success',
@@ -50,9 +59,7 @@ export class UserDashboardComponent {
     });
   }
 
-  readonly Pen = Pen;
-  readonly LogOut  = LogOut ;
-  thrsl = 'images/logo2.png';
+  
 
   itemsPerPage = 7;
   currentPage = 1;

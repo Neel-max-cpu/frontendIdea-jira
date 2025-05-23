@@ -1,1 +1,207 @@
-<p>admin-dashboard works!</p>
+<div class="relative h-screen w-screen bg-white text-black">
+  <div
+    class="flex gap-5 bg-blue-500 border-b border-gray-200/50 backdrop-blur-[2px] py-4 px-7 sticky top-0 z-30"
+  >
+    <div class="flex items-center">
+      <img class="w-30" src="{{ thrsl }}" alt="" />
+    </div>
+    <div class="flex items-center justify-between w-full text-white font-semibold">
+        <div class="flex gap-2">
+            <h1>Avinash Pandey</h1>
+            <h1>(Project Manager)</h1>
+        </div>
+        <button (click)="handleLogOut()" class="p-2 flex border items-center bg-red-600 rounded-xl shadow hover:cursor-pointer hover:bg-red-700">
+            <lucide-angular
+            [img]="LogOut"
+            class="text-white"
+            ></lucide-angular>
+        </button>
+    </div>
+  </div>
+
+  <div class="p-10">
+    <div class="flex gap-3 mb-5">
+        <button (click)="handleUser()" class="bg-blue-500 p-3 rounded-xl text-white font-medium hover:cursor-pointer hover:bg-blue-600">Create User</button>
+        <button (click)="handleTask()" class="bg-green-500 p-3 rounded-xl text-white font-medium hover:cursor-pointer hover:bg-green-600">Create Task</button>
+    </div>
+    <div class="bg-gray-200 p-3 rounded-lg shadow-xl">
+      <div
+        class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px] text-center mb-3 border-b-2 p-2 font-semibold text-lg"
+      >
+        <h1>Id</h1>
+        <h1>Status</h1>
+        <h1>Create By</h1>
+        <h1>Created On</h1>
+        <h1>Project</h1>
+        <h1>Module</h1>
+        <h1>Req Type</h1>
+        <h1>Priority</h1>
+        <h1>Edit</h1>
+      </div>
+      <!-- Data rows -->
+      <div
+        *ngFor="let item of paginatedItems"
+        class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px] text-center items-center p-2 space-x-2 mb-2 border-b border-gray-500"
+      >
+        <div>{{ item.id }}</div>
+        <div class="bg-red-600 rounded-lg text-white">{{ item.status }}</div>
+        <div>{{ item.createdBy }}</div>
+        <div>{{ item.createdOn }}</div>
+        <div>{{ item.project }}</div>
+        <div>{{ item.module }}</div>
+        <div>{{ item.reqType }}</div>
+        <div>{{ item.priority }}</div>       
+        <div
+            
+            class="p-2 flex items-center justify-center rounded-lg bg-green-700 hover:bg-green-800 cursor-pointer"
+        >
+          <lucide-angular
+            [img]="Pen"
+            class="w-5 h-5 text-white"
+          ></lucide-angular>                    
+        </div>
+           
+        
+      </div>     
+
+      <!-- Pagination Buttons -->
+      <div class="flex items-center justify-center gap-4 mt-4">
+        <button
+          (click)="prevPage()"
+          [disabled]="currentPage === 1"
+          class="btn-navigate"
+        >
+          Prev
+        </button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button
+          (click)="nextPage()"
+          [disabled]="currentPage === totalPages"
+          class="btn-navigate"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<!-- create user -->
+<p-dialog class="my-class" [(visible)]="UserVisible" maskStyleClass="backdrop-blur-sm" lable="Add New User">
+    <h1 class="text-center mb-3">Add New User</h1>
+    <div class="grid grid-cols-2 gap-3 items-center justify-center">
+        <!-- select employee -->
+        <p-select 
+        [options]="userEmps" 
+        [(ngModel)]="selectedUserEmp" 
+        optionLabel="name" 
+        placeholder="Select Employee" 
+        class="!bg-white !text-black w-full border rounded p-2 mt-1 md:w-56"
+        appendTo="body"
+         />
+        
+        <!-- username -->
+        <p-iftalabel>
+            <input class="!bg-white !text-black !border-gray-400 " pInputText id="username" [(ngModel)]="username" autocomplete="off" />
+            <label class="!text-slate-600" for="username">Username</label>
+        </p-iftalabel>
+        <!-- password -->
+        <p-iftalabel>
+            <input class="!bg-white !text-black !border-gray-400 " pInputText id="password" [(ngModel)]="password" autocomplete="off" />
+            <label class="!text-slate-600"  for="password">Password</label>
+        </p-iftalabel>
+         
+        <!-- Add role -->
+        <p-select 
+        [options]="userRole" 
+        [(ngModel)]="selectedUserRole" 
+        optionLabel="role" 
+        placeholder="Select Role" 
+        class="!bg-white !text-black w-full border rounded p-2 mt-1 md:w-56"
+        appendTo="body"
+        />
+        <button class="btn-primary w-full col-span-2 items-center">Add User</button>
+    </div>
+
+</p-dialog>
+
+<!-- create task -->
+<p-dialog class="my-class" [(visible)]="TaskVisible" maskStyleClass="backdrop-blur-sm" lable="Add New User">
+    <h1 class="text-center mb-3">Add New Task</h1>
+    <div class="grid grid-cols-3 gap-4 items-center justify-center">
+        <!-- Request Type -->
+        <p-select 
+        [options]="reqtypes" 
+        [(ngModel)]="selectedReqType" 
+        optionLabel="type" 
+        placeholder="Request Types"
+        class="!bg-white !text-black w-full border rounded p-2 mt-1 md:w-56"
+        appendTo="body"
+        />
+        <!-- project name -->
+        <p-select 
+        [options]="prodName" 
+        [(ngModel)]="selectedProdName" 
+        optionLabel="name" 
+        placeholder="Project Name"
+        class="!bg-white !text-black w-full border rounded p-2 mt-1 md:w-56"
+        appendTo="body"
+        />
+        <!-- Module Name -->
+        <p-select 
+        [options]="modName" 
+        [(ngModel)]="selectedModName" 
+        optionLabel="name" 
+        placeholder="Module Name"
+        class="!bg-white !text-black w-full border rounded p-2 mt-1 md:w-56"
+        appendTo="body"
+        />
+        <!-- Functionality Name -->
+        <p-iftalabel>
+            <input class="!bg-white !text-black !border-gray-400 " pInputText id="functionalityName" [(ngModel)]="functionalityName" autocomplete="off" />
+            <label class="!text-slate-600"  for="functionalityName">Functionality Name</label>
+        </p-iftalabel>
+        <!-- Assigned To -->
+        <p-select 
+        [options]="assignTo" 
+        [(ngModel)]="selectedAssignTo" 
+        optionLabel="name" 
+        placeholder="Assigned To"
+        class="!bg-white !text-black w-full border rounded p-2 mt-1 md:w-56"
+        appendTo="body"
+        />
+        <!-- Assigned date -->
+        <div class="flex flex-col">
+            <span class="">Assigned Date:</span>
+            <p-datepicker 
+            [(ngModel)]="date" 
+            [iconDisplay]="'input'" 
+            [showIcon]="true" 
+            inputId="icondisplay"
+            class="temp-class"                    
+            appendTo="body"
+            />
+        </div>
+        <!-- Request Proiority -->
+        <p-select 
+        [options]="reqPriority" 
+        [(ngModel)]="selectedReqPriority" 
+        optionLabel="name" 
+        placeholder="Request Priority"
+        class="!bg-white !text-black w-full border rounded p-2 mt-1 md:w-56"
+        appendTo="body"
+        />
+        <!-- Status -->
+        <p-select 
+        [options]="status" 
+        [(ngModel)]="selectedStatus" 
+        optionLabel="name" 
+        placeholder="Status"
+        class="!bg-white !text-black w-full border rounded p-2 mt-1 md:w-56"
+        appendTo="body"
+        />
+                    
+        <button class="btn-primary w-full col-span-3 items-center">Create Task</button>
+    </div>
+
+</p-dialog>

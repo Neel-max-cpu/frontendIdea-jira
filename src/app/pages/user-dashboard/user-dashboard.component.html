@@ -56,6 +56,8 @@
             class="w-5 h-5 text-white"
           ></lucide-angular>                    
         </div>
+           
+        
       </div>     
 
       <!-- Pagination Buttons -->
@@ -78,9 +80,9 @@
       </div>
     </div>
   </div>
-   <app-edit-popup
-    *ngIf="showPopup"
-    [item]="selectedItem"
-    (close)="closePopup()"
-    ></app-edit-popup>
+  <app-edit-popup
+  *ngIf="showPopup"
+  [item]="selectedItem"
+  (close)="closePopup()"
+  ></app-edit-popup>    
 </div>

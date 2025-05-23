@@ -7,7 +7,7 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
 export const routes: Routes = [
     {path:'', redirectTo:"login", pathMatch:"full"},
     {path:'login', component:LoginComponent},
-    {path:'admin-dashboard', component:AdminDashboardComponent},
-    {path:'superAdmin-dashboard', component:SuperAdminDashboardComponent},
-    {path:'user-dashboard', component:UserDashboardComponent},
+    {path:'adminDashboard', component:AdminDashboardComponent},
+    {path:'superAdminDashboard', component:SuperAdminDashboardComponent},
+    {path:'userDashboard', component:UserDashboardComponent},
 ];

@@ -24,7 +24,7 @@ export class LoginComponent {
       text: 'Logged In Successfully!',        
       confirmButtonText: 'ok'
     }).then((result)=>{        
-        this.router.navigate(['/user-dashboard'])
+        this.router.navigate(['/userDashboard'])
     })
   }
 
