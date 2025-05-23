@@ -26,14 +26,15 @@
     </div>
     <div class="bg-gray-200 p-3 rounded-lg shadow-xl">
       <div
-        class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px] text-center mb-3 border-b-2 p-2 font-semibold text-lg"
+        class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px] text-center mb-3 border-b-2 p-2 font-semibold text-lg"
       >
         <h1>Id</h1>
-        <h1>Status</h1>
-        <h1>Create By</h1>
+        <h1>Status</h1>        
         <h1>Created On</h1>
         <h1>Project</h1>
         <h1>Module</h1>
+        <h1>Assigned To</h1>
+        <h1>Start Date</h1>
         <h1>Req Type</h1>
         <h1>Priority</h1>
         <h1>Edit</h1>
@@ -41,18 +42,18 @@
       <!-- Data rows -->
       <div
         *ngFor="let item of paginatedItems"
-        class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px] text-center items-center p-2 space-x-2 mb-2 border-b border-gray-500"
+        class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px] text-center items-center p-2 space-x-2 mb-2 border-b border-gray-500"
       >
         <div>{{ item.id }}</div>
-        <div class="bg-red-600 rounded-lg text-white">{{ item.status }}</div>
-        <div>{{ item.createdBy }}</div>
+        <div class="bg-red-600 rounded-lg text-white">{{ item.status }}</div>        
         <div>{{ item.createdOn }}</div>
         <div>{{ item.project }}</div>
         <div>{{ item.module }}</div>
+        <div>{{ item.assigned_to }}</div>
+        <div>{{ item.start_date}}</div>
         <div>{{ item.reqType }}</div>
         <div>{{ item.priority }}</div>       
-        <div
-            
+        <div            
             class="p-2 flex items-center justify-center rounded-lg bg-green-700 hover:bg-green-800 cursor-pointer"
         >
           <lucide-angular
@@ -87,7 +88,7 @@
 </div>
 
 <!-- create user -->
-<p-dialog class="my-class" [(visible)]="UserVisible" maskStyleClass="backdrop-blur-sm" lable="Add New User">
+<p-dialog class="my-class" [modal]="true" [(visible)]="UserVisible" maskStyleClass="backdrop-blur-sm" lable="Add New User">
     <h1 class="text-center mb-3">Add New User</h1>
     <div class="grid grid-cols-2 gap-3 items-center justify-center">
         <!-- select employee -->
@@ -126,7 +127,7 @@
 </p-dialog>
 
 <!-- create task -->
-<p-dialog class="my-class" [(visible)]="TaskVisible" maskStyleClass="backdrop-blur-sm" lable="Add New User">
+<p-dialog class="my-class" [modal]="true" [(visible)]="TaskVisible" maskStyleClass="backdrop-blur-sm" lable="Add New User">
     <h1 class="text-center mb-3">Add New Task</h1>
     <div class="grid grid-cols-3 gap-4 items-center justify-center">
         <!-- Request Type -->

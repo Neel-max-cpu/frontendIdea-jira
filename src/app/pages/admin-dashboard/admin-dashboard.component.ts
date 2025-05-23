@@ -156,9 +156,11 @@ export class AdminDashboardComponent implements OnInit{
   UserVisible: boolean = false;
   handleUser(){
     this.UserVisible = true;
+    document.body.style.overflow = "hidden";
   }
   closeDialogUser() {
     this.UserVisible = false;
+    document.body.style.overflow = "auto";
   }
 
 
