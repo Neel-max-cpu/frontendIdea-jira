@@ -316,7 +316,7 @@
   maskStyleClass="backdrop-blur-sm"
   lable="Edit Assigned Task"
 >
-  <h1 class="text-center mb-3">Edit Taks ID: {{selectedItem.id}}</h1>
+  <h1 class="text-center mb-3">Edit Taks ID: {{selectedItem?.id}}</h1>
     <div class="flex gap-3">
         <p-select 
         [options]="status" 
@@ -338,7 +338,7 @@
   maskStyleClass="backdrop-blur-sm"
   lable="Edit Task Assigned"
 >
-  <h1 class="text-center mb-3">Edit Taks ID: {{selectedItem.id}}</h1>
+  <h1 class="text-center mb-3">Edit Taks ID: {{selectedItem?.id}}</h1>
     <div class="grid grid-col-2 gap-4 items-center justify-center">
         <!-- status -->
         <p-select 
