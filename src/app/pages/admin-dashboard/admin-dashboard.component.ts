@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 import { LucideAngularModule, Pen, LogOut } from 'lucide-angular';
 
 // data
-import data from './data.json';
+import assignedTask from './data.json';
+import myTask from './data2.json';
 
 // alert, component
 import Swal from 'sweetalert2';
@@ -152,8 +153,6 @@ export class AdminDashboardComponent implements OnInit{
 
   constructor(private router:Router) {} 
 
-
-
   UserVisible: boolean = false;
   handleUser(){
     this.UserVisible = true;
@@ -185,17 +184,46 @@ export class AdminDashboardComponent implements OnInit{
     });
   }
 
+  editAssignedTask:boolean = false;
+  selectedItem:any = null;
+  handleEditAssignedTask(item:any){
+    this.selectedItem = item;
+    this.editAssignedTask = true;
+  }
+  closeDialogEditTask(){
+    this.editAssignedTask = false;    
+  }
+
+  editMyTask:boolean = false;  
+  handleEditMyTask(item:any){
+    this.selectedItem = item;
+    this.editMyTask = true;
+  }
+  closeDialogEditMyTask(){
+    this.editMyTask = false;    
+  }
+
   itemsPerPage = 7;
   currentPage = 1;
-  fulldata = data;
+  assignedTask = assignedTask;
+  myTask = myTask;
 
-  get paginatedItems() {
+  get paginatedItemsGivenByAdmin() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
-    return this.fulldata.slice(start, start + this.itemsPerPage);
+    return this.assignedTask.slice(start, start + this.itemsPerPage);    
+  }
+
+  get paginatedItemsGivenToAdmin() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.myTask.slice(start, start + this.itemsPerPage);
   }
 
   get totalPages() {
-    return Math.ceil(this.fulldata.length / this.itemsPerPage);
+    if(!this.checked)
+      return Math.ceil(this.assignedTask.length / this.itemsPerPage);
+    else 
+      return Math.ceil(this.myTask.length / this.itemsPerPage);
+
   }
 
   nextPage() {
